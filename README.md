@@ -1,26 +1,14 @@
-
 ## About
 
 This demo app will allow a user to upload a list of products, which will be processed into entities via a queue. The user will then be able to view a paginated list of products, and use searches to filter the product list.
 
-It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewire/Tall. The test coverage is low. The models are not fully normalised.
-
 These aspects were selected to experiment with [Sail](https://laravel.com/docs/8.x/sail), [Queue](https://laravel.com/docs/8.x/queues), and [Scout](https://laravel.com/docs/8.x/scout).
 
-## Time Spent
+### Limitations
 
-Friday 23rd July: 1.5 hours
+It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewire/Tall. The test coverage is low. The models are not fully normalised, and there are no unique constraints.
 
-Getting a baseline installation using sail in place, with vue and tailwind
-
-Encountered:
-
-https://github.com/webpack-contrib/css-loader/issues/1347#issuecomment-883715208
-
-Resolution:
-```
-./vendor/bin/sail npm install --save-dev css-loader@5
-```
+The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
 
 ## Installation
 
@@ -62,22 +50,57 @@ cp .env.docker .env
 ./vendor/bin/sail artisan migrate:install
 ```
 ```
-./vendor/bin/sail artisan migrate
-```
-```
-./vendor/bin/sail artisan db:seed
+./vendor/bin/sail artisan migrate:fresh
 ```
 
 ### Running Locally ###
  
 1. Start the docker containers, using sail
 ```
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 
-2. Access the site: http://localhost/
+2. Run the queue
+```
+./vendor/bin/sail artisan queue:work
+```
 
-3. Stop the docker containers, using sail
+3. View the db via cli
+```
+docker compose exec mysql mysql -u sail -ppassword demo_product_app
+```
+**Note**: Will run until process is stopped
+
+3. Access the site: http://localhost/
+
+4. Stop the docker containers, using sail
 ```
 ./vendor/bin/sail down
 ```
+
+## Time Spent
+
+Friday 23rd July: 1.5 hours
+
+Getting a baseline installation using sail in place, with vue and tailwind
+
+Issues:
+
+https://github.com/webpack-contrib/css-loader/issues/1347#issuecomment-883715208
+
+Resolution:
+```
+./vendor/bin/sail npm install --save-dev css-loader@5
+```
+
+----
+
+Sat 24th July: 1.5 hours
+
+Create Product model, and create Job to import Products.
+
+Include Controller to import products from csv and dispatch to the queue.
+
+Issues:
+
+Understanding the queuing system and finding a suitable example to start from.
