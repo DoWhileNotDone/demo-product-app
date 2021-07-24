@@ -6,7 +6,7 @@ These aspects were selected to experiment with [Sail](https://laravel.com/docs/8
 
 ### Limitations
 
-It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewire/Tall. The test coverage is low. The models are not fully normalised, and there are no unique constraints.
+It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewire/Tall. The test coverage is low. The models are not fully normalised, and there are no unique constraints. There isn't much in the way of validation, or job failure handling. 
 
 The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
 
@@ -104,3 +104,10 @@ Include Controller to import products from csv and dispatch to the queue.
 Issues:
 
 Understanding the queuing system and finding a suitable example to start from.
+
+----
+
+Sat 24th July: 1 hour
+
+Add vue file uploader, post file to api for import.
+Add vue data list component to retrieve products and display name

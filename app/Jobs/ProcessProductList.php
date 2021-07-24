@@ -31,8 +31,8 @@ class ProcessProductList implements ShouldQueue
     public function handle()
     {
         echo("Task running for product list import\n");
-
-        $file_handle = fopen($this->path, "r");
+        
+        $file_handle = fopen(storage_path('/app/'.$this->path), "r");
 
         $exclude_header = true;
         while (($data = fgetcsv($file_handle)) !== false) {

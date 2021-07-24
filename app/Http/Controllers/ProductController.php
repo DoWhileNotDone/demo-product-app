@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Jobs\ProcessProductList;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    /**
+     * Retrieve the product data
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index(Request $request)
+    {
+        return Product::all();
+    }
+
     /**
      * Upload the products
      *
@@ -19,9 +31,7 @@ class ProductController extends Controller
      */
     public function upload(Request $request): Response
     {
-        //TODO: Store File, use path
-        $path = storage_path('app/legacy_products.csv');
-        //$path= $request->file('products')->getPathname();
+        $path = $request->file('file')->store('products');
         ProcessProductList::dispatch($path);
 
         return response(null, 202);
