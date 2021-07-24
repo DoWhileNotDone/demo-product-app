@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return Product::search()->paginate(15);
+        return Product::search($request->input('query'))->paginate(15);
     }
 
     /**

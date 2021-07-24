@@ -1,9 +1,9 @@
 <template>
     <div>
+      <data-list get-url="/api/products"></data-list>
       <div class="flex items-center justify-center">
         <file-importer post-url="/api/products"></file-importer>  
       </div>
-      <data-list get-url="/api/products"></data-list>  
     </div>
 </template>
 

@@ -6,13 +6,25 @@ These aspects were selected to experiment with [Sail](https://laravel.com/docs/8
 
 ### Limitations
 
-It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewire/Tall. The test coverage is low. The models are not fully normalised, and there are no unique constraints. There isn't much in the way of validation, or job failure handling. 
+It is not full featured. 
+
+While it uses Laravel 8 and Vue, it does not use Livewire/Tall. 
+
+The test coverage is low. 
+
+The models are not fully normalised, and there are no unique constraints. 
+
+There isn't much in the way of validation, or job failure handling. 
 
 The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
 
 There is no flag to check that all items have been imported and indexed.
 
 Pagination will scroll of screen if there are too many pages.
+
+Handling of the search could be improved.
+
+There is no list sorting.
 
 ## Installation
 
@@ -128,4 +140,8 @@ Add Laravel Vue Pagination with basic tailwind styling to emulate bootstrap
 Issues:
 
 https://www.npmjs.com/package/laravel-vue-pagination Has not been updated in a while
+
+Sat 24th July: 0.25 hour
+
+Add Search Component to Data Items
 

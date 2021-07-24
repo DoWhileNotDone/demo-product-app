@@ -32,8 +32,11 @@ class Product extends Model
     public function toSearchableArray()
     {
         $array = $this->toArray();
-
+        //Limit searchable fields for now.
+        unset($array['barcode']);
+        unset($array['price']);
         unset($array['image_url']);
+        unset($array['date_added']);
 
         return $array;
     }
