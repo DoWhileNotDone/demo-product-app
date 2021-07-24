@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+
+    .pagination {
+        @apply flex bg-white border border-white shadow-lg rounded-3xl p-4 m-4
+    }
+
+    .pagination-page-nav, .pagination-next-nav, .pagination-prev-nav {
+        @apply inline-flex items-center px-1 py-2 bg-white text-xs text-gray-900 hover:bg-gray-300;
+    }
+
+    .active {
+        @apply bg-gray-400;
+    }
+}

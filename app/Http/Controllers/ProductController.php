@@ -19,9 +19,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-
-        return Product::search()->get();
-//        return Product::all();
+        return Product::search()->paginate(15);
     }
 
     /**

@@ -12,6 +12,8 @@ The queue does not use batches, but sends the file path to a queue, which in tur
 
 There is no flag to check that all items have been imported and indexed.
 
+Pagination will scroll of screen if there are too many pages.
+
 ## Installation
 
 All instructions should be run from the root directory.
@@ -118,3 +120,12 @@ Sat 24th July: 0.75 hour
 
 Add Laravel Scout - Set up to index products
 Use indexed products in get 'all products'
+
+Sat 24th July: 1 hour
+
+Add Laravel Vue Pagination with basic tailwind styling to emulate bootstrap
+
+Issues:
+
+https://www.npmjs.com/package/laravel-vue-pagination Has not been updated in a while
+
