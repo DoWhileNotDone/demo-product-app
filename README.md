@@ -10,6 +10,8 @@ It is not full featured. While it uses Laravel 8 and Vue, it does not use Livewi
 
 The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
 
+There is no flag to check that all items have been imported and indexed.
+
 ## Installation
 
 All instructions should be run from the root directory.
@@ -111,3 +113,8 @@ Sat 24th July: 1 hour
 
 Add vue file uploader, post file to api for import.
 Add vue data list component to retrieve products and display name
+
+Sat 24th July: 0.75 hour
+
+Add Laravel Scout - Set up to index products
+Use indexed products in get 'all products'
