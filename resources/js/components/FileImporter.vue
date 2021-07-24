@@ -6,10 +6,10 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="file">
           File
         </label>
-        <input type="file" id="file" name="file" ref="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <input data-test="file" type="file" id="file" name="file" ref="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
       </div>
       <div class="flex items-center justify-between">
-        <button :disabled="submitted" @click="handleImport" class="bg-blue-500 hover:bg-blue-700 disabled:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <button data-test="upload" :disabled="submitted" @click="handleImport" class="bg-blue-500 hover:bg-blue-700 disabled:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
           Import
         </button>
          <p v-if="completed" class="m-2 text-red-500 text-xs italic">The file has been uploaded and has been queued for processing.</p>

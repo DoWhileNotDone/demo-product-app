@@ -6,25 +6,16 @@ These aspects were selected to experiment with [Sail](https://laravel.com/docs/8
 
 ### Limitations
 
-It is not full featured. 
-
-While it uses Laravel 8 and Vue, it does not use Livewire/Tall. 
-
-The test coverage is low. 
-
-The models are not fully normalised, and there are no unique constraints. 
-
-There isn't much in the way of validation, or job failure handling. 
-
-The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
-
-There is no flag to check that all items have been imported and indexed.
-
-Pagination will scroll of screen if there are too many pages.
-
-Handling of the search could be improved.
-
-There is no list sorting.
+ - It is not full featured, and the UI is poor
+ - While it uses Laravel 8 and Vue, it does not use Livewire/Tall. 
+ - The test coverage is low. 
+ - The models are not fully normalised, and there are no unique constraints. 
+ - There isn't much in the way of validation, or job failure handling. 
+ - The queue does not use batches, but sends the file path to a queue, which in turn delegates to a further queue for the item creation.
+ - There is no flag to check that all items have been imported and indexed.
+ - Pagination will scroll off screen if there are too many pages.
+ - Handling of the search could be improved.
+ - There is no list sorting.
 
 ## Installation
 
@@ -87,12 +78,25 @@ cp .env.docker .env
 docker compose exec mysql mysql -u sail -ppassword demo_product_app
 ```
 
+4. Access the site: http://localhost/
 
-3. Access the site: http://localhost/
-
-4. Stop the docker containers, using sail
+5. Stop the docker containers, using sail
 ```
 ./vendor/bin/sail down
+```
+
+### Running Tests ###
+
+1. vue/jest
+
+```
+./vendor/bin/sail npm run test
+```
+
+2. phpunit
+
+```
+./vendor/bin/sail artisan test
 ```
 
 ## Time Spent
@@ -129,10 +133,14 @@ Sat 24th July: 1 hour
 Add vue file uploader, post file to api for import.
 Add vue data list component to retrieve products and display name
 
+----
+
 Sat 24th July: 0.75 hour
 
 Add Laravel Scout - Set up to index products
 Use indexed products in get 'all products'
+
+----
 
 Sat 24th July: 1 hour
 
@@ -142,10 +150,20 @@ Issues:
 
 https://www.npmjs.com/package/laravel-vue-pagination Has not been updated in a while
 
+----
+
 Sat 24th July: 0.25 hour
 
 Add Search Component to Data Items
 
+----
+
 Sat 24th July: 0.75 hour
 
 Add Card Component with minimal styling
+
+----
+
+Sat 24th July: 0.75 hour
+
+Add minimal vue and phpunit tests
