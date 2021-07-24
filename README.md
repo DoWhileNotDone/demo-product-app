@@ -80,12 +80,13 @@ cp .env.docker .env
 ```
 ./vendor/bin/sail artisan queue:work
 ```
+**Note**: Will run until process is stopped
 
 3. View the db via cli
 ```
 docker compose exec mysql mysql -u sail -ppassword demo_product_app
 ```
-**Note**: Will run until process is stopped
+
 
 3. Access the site: http://localhost/
 
@@ -145,3 +146,6 @@ Sat 24th July: 0.25 hour
 
 Add Search Component to Data Items
 
+Sat 24th July: 0.75 hour
+
+Add Card Component with minimal styling
