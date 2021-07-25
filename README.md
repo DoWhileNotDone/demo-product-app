@@ -28,22 +28,24 @@ All instructions should be run from the root directory.
 docker run --rm --interactive --tty --volume $PWD:/app  composer install
 ```
 
-2. Start the docker containers, to configure using sail
+2. Configure site
+```
+cp .env.docker .env
+```
+
+3. Start the docker containers, to configure using sail
 ```
 ./vendor/bin/sail up -d
 ```
 
 **Note**: On first run, this will pull down the initial images required 
 
-3. Install node package dependencies
+4. Install node package dependencies
 ```
-docker run -it --rm -v "$PWD":/app -w "/app" node:latest npm install
+./vendor/bin/sail npm install
 ```
 
-4. Configure site
-```
-cp .env.docker .env
-```
+5. Configure site with sail
 ```
 ./vendor/bin/sail artisan key:generate
 ```
@@ -51,7 +53,7 @@ cp .env.docker .env
 ./vendor/bin/sail npm run dev
 ```
 
-5. Create Database
+6. Create Database
 
 ```
 ./vendor/bin/sail artisan migrate:install
@@ -78,9 +80,14 @@ cp .env.docker .env
 docker compose exec mysql mysql -u sail -ppassword demo_product_app
 ```
 
-4. Access the site: http://localhost/
+4. View the docker container logs
+```
+docker compose logs -f
+```
 
-5. Stop the docker containers, using sail
+5. Access the site: http://localhost/
+
+6. Stop the docker containers, using sail
 ```
 ./vendor/bin/sail down
 ```
